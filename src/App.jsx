@@ -112,7 +112,7 @@ function Overview() {
             <Link className="project-row" key={project.path} to={project.path}>
               <span className="project-number">{project.number}</span>
               <span className={`project-accent ${project.tone}`} />
-              <img src={project.image} alt="" />
+              <img src={project.image} alt="" loading="lazy" decoding="async" />
               <span className="project-copy">
                 <strong>{project.title}</strong>
                 <span>{project.summary}</span>
@@ -307,7 +307,7 @@ function Section({ title, intro, children }) {
 }
 
 function MediaSection({ image, alt, reverse = false, children }) {
-  return <section className={`project-section media-section ${reverse ? 'reverse' : ''}`}><figure><img src={image} alt={alt} /></figure><div className="media-copy">{children}</div></section>
+  return <section className={`project-section media-section ${reverse ? 'reverse' : ''}`}><figure><img src={image} alt={alt} loading="lazy" decoding="async" /></figure><div className="media-copy">{children}</div></section>
 }
 
 function TextBlock({ title, body }) {
