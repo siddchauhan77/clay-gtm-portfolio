@@ -307,7 +307,7 @@ function Section({ title, intro, children }) {
 }
 
 function MediaSection({ image, alt, reverse = false, children }) {
-  return <section className={`project-section media-section ${reverse ? 'reverse' : ''}`}><figure><img src={image} alt={alt} loading="lazy" decoding="async" /></figure><div className="media-copy">{children}</div></section>
+  return <section className={`project-section media-section ${reverse ? 'reverse' : ''}`}><figure><img src={image} alt={alt} loading="eager" fetchPriority="high" /></figure><div className="media-copy">{children}</div></section>
 }
 
 function TextBlock({ title, body }) {
