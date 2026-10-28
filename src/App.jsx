@@ -1,7 +1,9 @@
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { accounts, projects } from './data'
 
-const repoUrl = 'https://github.com/siddchauhan77/clay-gtm-portfolio'
+const evidenceRepoUrl = 'https://github.com/siddchauhan77/clay-gtm-execution-sprint'
+const sourceRepoUrl = 'https://github.com/siddchauhan77/clay-gtm-portfolio'
+const evidenceBase = `${evidenceRepoUrl}/blob/main`
 
 function Arrow({ direction = 'right' }) {
   const rotate = direction === 'left' ? 'rotate(180 12 12)' : undefined
@@ -31,8 +33,8 @@ function Header() {
             <NavLink key={to} to={to} end={to === '/'}>{label}</NavLink>
           ))}
         </nav>
-        <a className="header-repo" href={repoUrl} target="_blank" rel="noreferrer">
-          GitHub <Arrow />
+        <a className="header-repo" href={evidenceRepoUrl} target="_blank" rel="noreferrer">
+          Evidence repo <Arrow />
         </a>
       </div>
     </header>
@@ -53,7 +55,7 @@ function Footer() {
       </div>
       <div className="shell footer-meta">
         <span>© 2026 Sidd Chauhan</span>
-        <a href={repoUrl} target="_blank" rel="noreferrer">View source</a>
+        <span className="footer-links"><a href={evidenceRepoUrl} target="_blank" rel="noreferrer">Evidence</a><a href={sourceRepoUrl} target="_blank" rel="noreferrer">Site source</a></span>
       </div>
     </footer>
   )
@@ -80,7 +82,7 @@ function Overview() {
           <p>Three Clay projects combined into one execution sprint: 25 accounts sourced, 8 researched, 5 prioritized, one account brief, and one GTM plan.</p>
           <div className="hero-actions">
             <Link className="button button-primary" to="/lead-list">View the case study <Arrow /></Link>
-            <a className="text-link" href={repoUrl} target="_blank" rel="noreferrer">GitHub <Arrow /></a>
+            <a className="text-link" href={evidenceRepoUrl} target="_blank" rel="noreferrer">Inspect the evidence <Arrow /></a>
           </div>
         </div>
         <figure className="hero-visual">
@@ -129,8 +131,8 @@ function Overview() {
           <p>Research and strategy are complete. Outreach and market outcomes are not presented as finished work.</p>
         </div>
         <div className="status-grid">
-          <StatusColumn title="Complete" tone="lime" items={['25 accounts sourced and enriched', '8 accounts researched', '5 accounts prioritized', 'Wooqer account brief', 'Side-hustle GTM plan', 'Campaign landing page']} />
-          <StatusColumn title="Next" tone="blue" pending items={['Personalized outreach', 'Follow-ups', 'Replies and objections', 'Calls and referrals', 'Paid pilot and revenue', 'Results-based retrospective']} />
+          <StatusColumn title="Complete" tone="lime" items={['25-account source record', '8 accounts researched', '5 records routed in a test CRM', 'Duplicate-safe rerun test', 'Failed-record recovery test', 'Wooqer brief and GTM plan']} />
+          <StatusColumn title="Next" tone="blue" pending items={['Approved test-CRM connection', 'Personalized outreach', 'Replies and objections', 'Calls and referrals', 'Paid pilot and revenue', 'Results-based retrospective']} />
         </div>
       </section>
     </Layout>
@@ -153,12 +155,11 @@ function StatusColumn({ title, tone, items, pending = false }) {
 }
 
 const scoring = [
-  ['01', 'ICP fit', 'Does the company match the target profile?'],
-  ['02', 'Trigger strength', 'Is there a recent event creating urgency?'],
-  ['03', 'Founder-content opportunity', 'Is there room for buyer education?'],
-  ['04', 'Ability to pay', 'Do funding, scale, and signals support a test?'],
-  ['05', 'Reachability', 'Is there a plausible path to the buyer?'],
-  ['06', 'Portfolio value', 'Does the work build relevant career evidence?'],
+  ['01', 'ICP fit', '30%', 'Does the company match the target profile?'],
+  ['02', 'Trigger strength', '25%', 'Is there a recent event creating urgency?'],
+  ['03', 'Founder-content opportunity', '20%', 'Is there a specific buyer-education gap?'],
+  ['04', 'Ability to pay', '15%', 'Do verified buying signals support a paid test?'],
+  ['05', 'Reachability', '10%', 'Is there a plausible path to the buyer?'],
 ]
 
 function LeadList() {
@@ -174,12 +175,14 @@ function LeadList() {
 
       <Section title="Target account list" intro="The five prioritized accounts from the 25-account list.">
         <AccountTable />
+        <p className="boundary-note"><strong>Evidence boundary:</strong> The original numeric scores, weights, source URLs, and enrichment dates were not retained. The commercial rubric below is Scoring Methodology v2.0, adopted October 28, 2026. Historic totals are not presented as recovered data.</p>
       </Section>
 
-      <Section title="Scoring criteria" intro="Each account was evaluated across six decision criteria.">
+      <Section title="Commercial scoring model" intro="Five weighted dimensions. Career and networking value stays separate.">
         <div className="criteria-grid">
-          {scoring.map(([number, title, body]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}
+          {scoring.map(([number, title, weight, body]) => <article key={number}><span>{number}</span><strong className="criteria-weight">{weight}</strong><h3>{title}</h3><p>{body}</p></article>)}
         </div>
+        <p className="boundary-note"><strong>Unknown is not zero.</strong> A commercial total stays incomplete when required evidence is missing. Career value cannot raise a commercial score.</p>
       </Section>
 
       <Section title="Disqualification logic" intro="Company quality and prospect quality are different questions.">
@@ -197,6 +200,24 @@ function LeadList() {
         <ol className="number-list"><li>Define offer and ICP</li><li>Source and enrich 25 accounts</li><li>Research eight accounts manually</li><li>Score and finalize five</li></ol>
       </MediaSection>
 
+      <Section title="Safe handoff test" intro="A local simulation extends the list into routing and test-CRM behavior.">
+        <ol className="horizontal-flow handoff-flow"><li>Normalize</li><li>Deduplicate</li><li>Human review</li><li>Route</li><li>Test-CRM upsert</li><li>Log</li></ol>
+        <div className="proof-metrics">
+          <TextBlock title="First run" body="26 rows, 25 unique domains, one duplicate removed, five inserts, one conflict failed closed. 42.441 ms." />
+          <TextBlock title="Safe rerun" body="Zero new inserts. Five records stayed unchanged. 3.856 ms." />
+          <TextBlock title="Recovery" body="The disputed values became unknown. Failed records fell from one to zero. 2.838 ms." />
+        </div>
+        <p className="boundary-note"><strong>Simulation only:</strong> No external CRM, enrichment provider, sequence, email account, or contact changed. Local processing cost was $0. Provider cost was not measured.</p>
+      </Section>
+
+      <EvidenceLinks links={[
+        ['Target-account data v2', `${evidenceBase}/data/target-accounts-v2.csv`],
+        ['Scoring Methodology v2.0', `${evidenceBase}/data/scoring-methodology.md`],
+        ['Source register', `${evidenceBase}/data/source-register.csv`],
+        ['Run logs and simulated CRM', `${evidenceBase}/evidence/runs/run-summary.md`],
+        ['Full project write-up', `${evidenceBase}/projects/01-lead-list-and-rank-targets.md`],
+      ]} />
+
       <Evidence evidence={['A 25-account list with enrichment signals', 'A documented shortlist and final five', 'Specific reasons to retain, benchmark, or drop accounts']} learning={['Automated data is necessary, not sufficient', 'A strong company is not automatically a strong prospect', 'Disqualification logic improves the credibility of the ranking']} />
       <ProjectNav previous={{ path: '/', title: 'Overview' }} next={projects[1]} />
     </ProjectLayout>
@@ -207,8 +228,8 @@ function AccountTable() {
   return (
     <div className="table-scroll">
       <table>
-        <thead><tr><th>Company</th><th>Employees</th><th>3-mo growth</th><th>12-mo growth</th><th>Status</th><th>Why it stayed</th></tr></thead>
-        <tbody>{accounts.map(account => <tr key={account.name}><td><strong>{account.name}</strong></td><td>{account.employees}</td><td>{account.growth3}</td><td>{account.growth12}</td><td>{account.status}</td><td>{account.note}</td></tr>)}</tbody>
+        <thead><tr><th>Company</th><th>Employees</th><th>3-mo growth</th><th>12-mo growth</th><th>Route</th><th>Career value</th><th>Evidence status</th><th>Why it stayed</th></tr></thead>
+        <tbody>{accounts.map(account => <tr key={account.name}><td><strong>{account.name}</strong></td><td>{account.employees}</td><td>{account.growth3}</td><td>{account.growth12}</td><td>{account.route}</td><td>{account.careerValue}</td><td>{account.evidence}</td><td>{account.note}</td></tr>)}</tbody>
       </table>
     </div>
   )
@@ -236,8 +257,24 @@ function AccountBrief() {
       </MediaSection>
 
       <Section title="The 90-second brief" intro="A compact research narrative for fast sales preparation.">
-        <blockquote className="brief-quote">Wooqer already has strong global proof. The GTM challenge appears to be translating that credibility into U.S. awareness, trust, and pipeline. Founder-led content could support the expansion by turning operational knowledge, customer stories, and U.S. market learning into useful category education for retail operations leaders.</blockquote>
+        <blockquote className="brief-quote">Wooqer already has strong global proof. The GTM challenge appears to be translating that credibility into U.S. awareness, trust, and pipeline. The hypothesis: founder-led content supports the expansion by turning operational knowledge, customer stories, and U.S. market learning into useful category education for retail operations leaders.</blockquote>
       </Section>
+
+      <Section title="Fact, claim, and hypothesis" intro="The source boundary for the account brief.">
+        <div className="open-grid three-col">
+          <TextBlock title="Current facts" body="Official Wooqer pages support current US-chain positioning, retail and restaurant use cases, audits, checklists, frontline communication, and analytics." />
+          <TextBlock title="Vendor claims" body="Adoption, compliance, time-savings, and customer outcome figures remain attributed vendor claims. They are not independent results." />
+          <TextBlock title="Hypothesis" body="Founder-led category education supporting US relevance is a testable account hypothesis. No response, pipeline, or revenue result establishes it." />
+        </div>
+      </Section>
+
+      <EvidenceLinks links={[
+        ['Full Wooqer brief', `${evidenceBase}/projects/02-90-second-account-brief.md`],
+        ['Wooqer official US retail page', 'https://wooqer.com/us/solutions/retail/'],
+        ['Wooqer official US page', 'https://wooqer.com/us/'],
+        ['Wooqer LinkedIn company page', 'https://www.linkedin.com/company/wooqer'],
+        ['Source register', `${evidenceBase}/data/source-register.csv`],
+      ]} />
 
       <Evidence evidence={['Company and buyer context', 'A concrete expansion trigger', 'A specific account-level GTM hypothesis']} learning={['A trigger matters only when it changes the outreach angle', 'Founder activity changes the recommendation from adoption to orchestration', 'A useful brief ends in a testable hypothesis']} />
       <ProjectNav previous={projects[0]} next={projects[2]} />
@@ -277,6 +314,13 @@ function GtmPlan() {
         <ol className="horizontal-flow campaign-flow"><li>15 prospects</li><li>Replies</li><li>Conversations</li><li>Sales call</li><li>Paid pilot</li><li>Retainer test</li></ol>
         <p className="evidence-note">Planning target only. No outreach, response, meeting, pilot, or revenue result is claimed yet.</p>
       </Section>
+
+      <EvidenceLinks links={[
+        ['Full GTM plan', `${evidenceBase}/projects/03-side-hustle-gtm-plan.md`],
+        ['Campaign landing page source', `${evidenceBase}/landing-page/index.html`],
+        ['Combined case study', `${evidenceBase}/case-study/combined-case-study.md`],
+        ['Evidence checklist', `${evidenceBase}/case-study/portfolio-evidence-checklist.md`],
+      ]} />
 
       <Evidence evidence={['Offer, ICP, and trigger definition', 'A scoped pilot and pricing test', 'Channels, funnel, and measurement plan']} learning={['The first objective is one real client conversation', 'A landing page validates an offer after outreach', 'Revenue evidence begins only after a payment is received']} />
       <ProjectNav previous={projects[1]} />
@@ -320,6 +364,16 @@ function Evidence({ evidence, learning }) {
       <div className="evidence-grid">
         <div><h3>Evidence</h3><ul className="plain-list">{evidence.map(item => <li key={item}>{item}</li>)}</ul></div>
         <div><h3>Learning</h3><ul className="plain-list">{learning.map(item => <li key={item}>{item}</li>)}</ul></div>
+      </div>
+    </Section>
+  )
+}
+
+function EvidenceLinks({ links }) {
+  return (
+    <Section title="Open the evidence" intro="Direct links to the underlying data, method, sources, and project file.">
+      <div className="evidence-link-grid">
+        {links.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer"><span>{label}</span><Arrow /></a>)}
       </div>
     </Section>
   )

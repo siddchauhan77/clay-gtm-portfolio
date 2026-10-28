@@ -2,15 +2,17 @@
 
 A four-route portfolio site that presents three completed Clay projects as one evidence-bounded GTM execution sprint.
 
+The site links each route to the underlying evidence repository, separates commercial fit from career value, labels missing source history, and reports a local simulated CRM handoff with duplicate-safe rerun and failure-recovery tests.
+
 ## Routes
 
-• `/` — overview and completion boundary
+• `/`: overview and completion boundary
 
-• `/lead-list` — 25 → 8 → 5 target prioritization
+• `/lead-list`: 25 → 8 → 5 target prioritization
 
-• `/account-brief` — Wooqer 90-second account brief
+• `/account-brief`: Wooqer 90-second account brief
 
-• `/gtm-plan` — Founder-Led Demand Content GTM plan
+• `/gtm-plan`: Founder-Led Demand Content GTM plan
 
 ## Run locally
 
