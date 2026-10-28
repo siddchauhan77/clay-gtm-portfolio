@@ -26,7 +26,7 @@ export const projects = [
   {
     number: '03',
     path: '/gtm-plan',
-    title: 'Side-Hustle GTM Plan',
+    title: 'Commercial Test Plan',
     summary: 'Defined the offer, ICP, pricing test, campaign funnel, channels, and commercial learning loop.',
     image: '/assets/founder_led_demand_content_system.png',
     tone: 'lime',

@@ -3,6 +3,7 @@ import { accounts, projects } from './data'
 
 const evidenceRepoUrl = 'https://github.com/siddchauhan77/clay-gtm-execution-sprint'
 const sourceRepoUrl = 'https://github.com/siddchauhan77/clay-gtm-portfolio'
+const linkedinUrl = 'https://www.linkedin.com/in/siddchauhan77/'
 const evidenceBase = `${evidenceRepoUrl}/blob/main`
 
 function Arrow({ direction = 'right' }) {
@@ -24,9 +25,9 @@ function Header() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="brand" to="/" aria-label="Clay GTM Portfolio home">
-          <strong>Clay GTM Portfolio</strong>
-          <span>by Sidd Chauhan</span>
+        <Link className="brand" to="/" aria-label="Sidd Chauhan GTM systems portfolio home">
+          <strong>Sidd Chauhan</strong>
+          <span>GTM systems portfolio</span>
         </Link>
         <nav aria-label="Primary navigation">
           {links.map(([to, label]) => (
@@ -46,16 +47,16 @@ function Footer() {
     <footer>
       <div className="shell footer-main">
         <div className="brand footer-brand">
-          <strong>Clay GTM Portfolio</strong>
-          <span>Ideas to execution, with evidence.</span>
+          <strong>Sidd Chauhan</strong>
+          <span>GTM systems. Decisions. Evidence.</span>
         </div>
         <div className="footer-status">
-          <span className="status-dot" /> Strategy complete. Distribution pending.
+          <span className="status-dot" /> Evidence published. External outcomes pending.
         </div>
       </div>
       <div className="shell footer-meta">
-        <span>© 2026 Sidd Chauhan</span>
-        <span className="footer-links"><a href={evidenceRepoUrl} target="_blank" rel="noreferrer">Evidence</a><a href={sourceRepoUrl} target="_blank" rel="noreferrer">Site source</a></span>
+        <span>© 2026 Sidd Chauhan · Independent work. Not affiliated with or endorsed by Clay.</span>
+        <span className="footer-links"><a href={linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a><a href={evidenceRepoUrl} target="_blank" rel="noreferrer">Evidence</a><a href={sourceRepoUrl} target="_blank" rel="noreferrer">Site source</a></span>
       </div>
     </footer>
   )
@@ -78,16 +79,29 @@ function Overview() {
     <Layout>
       <section className="shell hero overview-hero">
         <div className="hero-copy">
-          <h1>From account data to GTM decisions.</h1>
-          <p>Three Clay projects combined into one execution sprint: 25 accounts sourced, 8 researched, 5 prioritized, one account brief, and one GTM plan.</p>
+          <div className="project-label">Independent Clay execution sprint · Hiring portfolio</div>
+          <h1>I turn messy GTM data into decisions teams can use.</h1>
+          <p>Account research, scoring, test-CRM routing, duplicate-safe reruns, failed-record recovery, and commercial planning. Built as role evidence for GTM systems, RevOps, AI product marketing, and deployment work.</p>
           <div className="hero-actions">
-            <Link className="button button-primary" to="/lead-list">View the case study <Arrow /></Link>
-            <a className="text-link" href={evidenceRepoUrl} target="_blank" rel="noreferrer">Inspect the evidence <Arrow /></a>
+            <Link className="button button-primary" to="/lead-list">Review the operating proof <Arrow /></Link>
+            <a className="text-link" href={linkedinUrl} target="_blank" rel="noreferrer">Discuss a role <Arrow /></a>
           </div>
         </div>
         <figure className="hero-visual">
-          <img src="/assets/gtm_execution_sprint_journey.png" alt="Visual map of the Clay GTM execution sprint" />
+          <img src="/assets/from_25_to_5_account_selection_journey.png" alt="Funnel showing 25 candidate accounts narrowed to eight researched accounts and five priorities" />
         </figure>
+      </section>
+
+      <section className="rule-section shell projects-section">
+        <div className="section-intro split-intro">
+          <h2>Role fit in 30 seconds</h2>
+          <p>The work shows how I structure ambiguous inputs, preserve evidence boundaries, and move a GTM decision toward reliable execution.</p>
+        </div>
+        <div className="open-grid three-col">
+          <TextBlock title="Research judgment" body="Reduced 25 accounts to eight researched companies and five priorities. Kept commercial fit separate from networking value and preserved unknown data." />
+          <TextBlock title="Operational reliability" body="Tested normalization, deduplication, human review, routing, test-CRM upserts, a duplicate-safe rerun, and failed-record recovery." />
+          <TextBlock title="Commercial thinking" body="Converted account evidence into a concise brief, a specific GTM hypothesis, and a measurable commercial test without claiming unearned results." />
+        </div>
       </section>
 
       <section className="rule-section shell decision-section">
@@ -284,7 +298,7 @@ function AccountBrief() {
 
 function GtmPlan() {
   return (
-    <ProjectLayout active="gtm-plan" title="Turn the research into a commercial test." subtitle="The offer became a 30-day Founder Demand Pilot for B2B SaaS companies with complex products." aside="The plan connects a specific ICP, trigger signals, a scoped offer, outreach, and a measurable learning loop.">
+    <ProjectLayout active="gtm-plan" title="Turn the research into a measurable commercial test." subtitle="The offer became a 30-day Founder Demand Pilot for B2B SaaS companies with complex products." aside="The plan connects a specific ICP, trigger signals, a scoped offer, outreach, and a measurable learning loop.">
       <Section title="The offer" intro="Founder-Led Demand Content System">
         <div className="offer-statement">Turn founder expertise, customer conversations, and product insight into LinkedIn and newsletter content that supports buyer education, category authority, and sales conversations.</div>
       </Section>
@@ -333,7 +347,7 @@ function ProjectLayout({ title, subtitle, aside, children }) {
   const routeLabel = {
     '/lead-list': 'Lead List + Target Ranking',
     '/account-brief': '90-Second Account Brief',
-    '/gtm-plan': 'Side-Hustle GTM Plan',
+    '/gtm-plan': 'Commercial Test Plan',
   }[pathname]
   return (
     <Layout>

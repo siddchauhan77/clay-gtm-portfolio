@@ -1,4 +1,6 @@
-# Clay GTM Portfolio
+# Sidd Chauhan · GTM Systems Portfolio
+
+Independent hiring portfolio built from a Clay execution sprint. Not affiliated with or endorsed by Clay.
 
 A four-route portfolio site that presents three completed Clay projects as one evidence-bounded GTM execution sprint.
 
